@@ -7,16 +7,18 @@ class employeeWage {
 		int partTimeHours = 4;
 		Random rand = new Random();
 		int randomNum = rand.nextInt(3);
-		if(randomNum==0) {
+		switch (randomNum) {
+		case 0:
 			int dailyWage = fullDayHours * wagePerHour;
 			System.out.println("Employee is Present! DailyWage is "+dailyWage);
-		}
-		else if(randomNum==1) {
-			int dailyWage = partTimeHours * wagePerHour;
-			System.out.println("Employee is Present for Halfday. Dailywage is "+dailyWage);
-		}
-		else {
+			break;
+		case 1:
+			int dailywage = partTimeHours * wagePerHour;
+			System.out.println("Employee is Present for Halfday. Dailywage is "+dailywage);
+			break;
+		case 2:
 			System.out.println("Employee is Absent");
+			break;
 		}
 	}
 }
