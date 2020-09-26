@@ -9,11 +9,12 @@ public class employeeWage {
 	public int workingDays;
 	public int monthlyWage;
 	public int workingHours;
+	static int num=1;
 	int hours=0;
 	Random rand = new Random();	
 	static ArrayList<Integer> totalWage = new ArrayList<Integer>();
 	public void monthlyWages() {
-		for(int i=0; i<=workingDays; i++) {
+		for(int i=0; i<workingDays; i++) {
 			if(hours<=workingHours) {
 				int randomNum = rand.nextInt(3);
 				switch (randomNum) {
@@ -23,16 +24,15 @@ public class employeeWage {
 					hours = hours + fullDayHours;
 					break;
 				case 1:
-					int dailyWage = partTimeHours * wagePerHour;
+					dailyWage = partTimeHours * wagePerHour;
 					monthlyWage = monthlyWage + dailyWage;
 					hours = hours + partTimeHours;
 					break;
 				case 2:
 					break;
 				}
-				}
-			
 			}
+		}
     
 }
 		public static void main(String args[]) {
@@ -64,12 +64,24 @@ public class employeeWage {
 				hr.add(obj.hours);
 				
 			}
-			for(int k=1; k<=numCompany; k++) {
-			System.out.println("Organization = "+org.get(k-1));
-			System.out.println("Monthlywage = "+totalWage.get(k-1)+" TotalHours = "+hr.get(k-1));
+			System.out.println("Following are the companies : ");
+			System.out.println(org);
+			while( num== 1 ) {
+			sc.nextLine();
+			System.out.println("Enter the company name to get the details : ");
+			String company = sc.nextLine();
+			for(int m=0; m<numCompany; m++) {
+				String val = org.get(m);
+				if(company.equals(val)) {
+					System.out.println("\nOrganization = "+org.get(m));
+					System.out.println("Monthlywage = "+totalWage.get(m)+" TotalHours = "+hr.get(m));
+				}
 			}
+			System.out.println("\nEnter 1 to re - search company details\nenter 0 to exit ");
+			num=sc.nextInt();
+		}
+			System.out.println("Program completed! Thank you!");
 			sc.close();
 			
 		}
-		
-	}
+}
